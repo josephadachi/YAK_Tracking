@@ -1,0 +1,7 @@
+#!/bin/bash
+# shell script to manage autostart
+
+sleep 5
+echo starting tracking!
+python /home/pi/Desktop/YAK_Tracking/Integration.py
+sleep 1000
