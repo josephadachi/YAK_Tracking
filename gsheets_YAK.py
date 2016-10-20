@@ -1,8 +1,8 @@
-
 from __future__ import print_function
 import httplib2
 import os
 
+from multiprocessing import Process    #new
 from apiclient import discovery
 import oauth2client
 from oauth2client import client
@@ -11,8 +11,6 @@ from oauth2client import tools
 try:
     import argparse
     flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
-    # Don't know what this does really
-    #flags.noauth_local_webserver = True
 except ImportError:
     flags = None
 
@@ -38,12 +36,13 @@ def get_credentials():
         os.makedirs(credential_dir)
     credential_path = os.path.join(credential_dir,
                                    'sheets.googleapis.com-python-quickstart.json')
-
+    uhoh = Process(target=press_button, args=())    #new
     store = oauth2client.file.Storage(credential_path)
     credentials = store.get()
     if not credentials or credentials.invalid:
         flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
         flow.user_agent = APPLICATION_NAME
+        uhoh.start()    #new
         if flags:
             credentials = tools.run_flow(flow, store, flags)
         else:    # Needed only for compatibility with Python 2.6
@@ -51,6 +50,9 @@ def get_credentials():
         print('Storing credentials to ' + credential_path)
     return credentials
 
+def press_button():    #new
+    os.system("/home/pi/Desktop/YAK_Tracking/sim_authenticate")
+    print('Tried to click the button...')
 
 class active_sheet(object):
     def __init__(self, sheet='YAK'):

@@ -1,0 +1,20 @@
+#!/bin/bash
+# Simulate mouse click to authenticate
+
+sleep 9
+xdotool mousemove 1140 430
+sleep 1
+xdotool click 1
+sleep 2
+xdotool mousemove 1905 55
+sleep 1
+xdotool click 1
+
+
+#Don't know why but this keeps spawning new windows
+
+#window_id=$(xdotool search Authentication)
+#xdotool windowkill $window_id
+#sleep 4
+#window_id=$(xdotool search Request)
+#xdotool windowkill $window_id
