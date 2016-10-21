@@ -2,11 +2,13 @@
 # Simulate mouse click to authenticate
 
 sleep 9
-xdotool mousemove 1140 430
+#xdotool mousemove 1140 430
+xdotool mousemove 500 425
 sleep 1
 xdotool click 1
 sleep 2
-xdotool mousemove 1905 55
+#xdotool mousemove 1905 55
+xdotool mousemove 630 55
 sleep 1
 xdotool click 1
 
