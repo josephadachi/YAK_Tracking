@@ -33,6 +33,7 @@ def google_update(queue):
 
 def main():
     # Add: record startup date/time in device logfile
+    location = 'Location #3'
     queue = Queue()
     update = Process(target=google_update, args=(queue,))
     update.start()
@@ -44,9 +45,9 @@ def main():
             data_in = raw_input("Waiting for a name:")    # raw in python<V3
             check, first, last = data_in.split()
             print check
-            if check == 'yak':
+            if check == 'YAK':
                 print('Verified! \nTelling worker #2...')
-                queue.put([first, last, asctime()], block=True, timeout=2)
+                queue.put([first, last, asctime(), location], block=True, timeout=2)
             elif check == 'no':
                 print('Okie!')
                 cond = False
